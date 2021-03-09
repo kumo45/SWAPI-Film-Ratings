@@ -1,0 +1,71 @@
+﻿@model MovieViewModel
+@{
+    ViewData["Title"] = "Rate Movie";
+}
+@* This class definitely needs CSS to make it much more readable, which would be my next step *@
+<h2>Rate Movie</h2>
+
+@using (Html.BeginForm("Save", "Movies"))
+{
+<div>
+    <div>
+        @Html.LabelFor(model => model.Title)
+        <div>
+            @Html.DisplayFor(model => model.Title)
+        </div>
+    </div>
+
+    <div >
+        @Html.LabelFor(model => model.EpisodeId)
+        <div>
+            @Html.DisplayFor(model => model.EpisodeId)
+        </div>
+    </div>
+
+    <div>
+        @Html.LabelFor(model => model.Director)
+        <div>
+            @Html.DisplayFor(model => model.Director)
+        </div>
+    </div>
+
+    <div>
+        @Html.LabelFor(model => model.ReleaseDate)
+        <div>
+            @Html.DisplayFor(model => model.ReleaseDate)
+        </div>
+    </div>
+
+    <div>
+        @Html.LabelFor(model => model.OpeningCrawl)
+        <div>
+            @Html.DisplayFor(model => model.OpeningCrawl)
+        </div>
+    </div>
+
+    <div>
+        <label>Old Rating</label>
+        <div>
+            @Html.DisplayFor(model => model.Rating)
+        </div>
+    </div>
+
+    <div>
+        <label>New Rating</label>
+        <div>
+            @Html.DropDownListFor(model => model.Rating, Model.Ratings)
+        </div>
+    </div>
+
+    <div>
+        <div>
+            <input type="hidden" name="id" value="@Model.Id" />
+            <input type="submit" value="Save" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

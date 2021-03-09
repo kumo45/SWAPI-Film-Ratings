@@ -1,0 +1,66 @@
+﻿@model IEnumerable<MovieViewModel>
+
+@{
+    ViewData["Title"] = "Movies";
+}
+
+<h2>Real Star Wars Movies</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EpisodeId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Director)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReleaseDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OpeningCrawl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Rating)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EpisodeId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Director)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReleaseDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OpeningCrawl)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rating)
+                @*@Html.DropDownListFor(modelItem => item.Rating, item.Ratings, new { onchange = "" })*@
+            </td>
+            <td>
+                @*<input type="hidden" value="item.Id" />*@
+                @*<input type="submit" value="Submit" /><input type="button" value="Save" onclick="location.href='@Url.Action("Save", "Movies", item)'"/>*@ 
+                <input type="button" value="Change Rating" onclick="location.href='@Url.Action("Edit", "Movies", item)'" />
+            </td>
+            
+        </tr>
+        }
+    </tbody>
+</table>
+
